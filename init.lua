@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
 require("vim-options")
 require("relative-number")
 require("lazy").setup("plugins")
