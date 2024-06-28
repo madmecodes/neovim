@@ -1,4 +1,3 @@
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,17 +10,11 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-local opts={}
+local opts = {}
 -- vim.opt.termguicolors = true
---vim.api.nvim_set_hl(0, 'NormalFloat', {fg = LightGrey})
-vim.api.nvim_set_hl(0, 'NormalFloat', {fg = '#00FF00', bg = 'NONE'})
+
+vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#00FF00", bg = "#a9a9a9" })
 
 require("vim-options")
+require("relative-number")
 require("lazy").setup("plugins")
-
-
-
-
-
-
-
