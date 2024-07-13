@@ -23,6 +23,11 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
+local home = os.getenv("HOME")
+package.path = package.path .. ";" .. home .. "/.luarocks/share/lua/5.1/?.lua;" .. home .. "/.luarocks/share/lua/5.1/?/init.lua"
+package.cpath = package.cpath .. ";" .. home .. "/.luarocks/lib/lua/5.1/?.so"
+
+
 require("vim-options")
 require("relative-number")
 require("lazy").setup("plugins")

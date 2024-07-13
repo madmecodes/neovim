@@ -55,4 +55,6 @@ return {
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
+  require('plugins.go'),  -- Add this line to include the go.lua plugin
+
 }
