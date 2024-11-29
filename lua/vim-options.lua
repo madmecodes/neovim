@@ -10,15 +10,32 @@ vim.api.nvim_set_keymap("n", "<C-Space><Down>", "<C-w>j", { noremap = true, sile
 vim.api.nvim_set_keymap("n", "<C-Space><Up>", "<C-w>k", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-Space><Right>", "<C-w>l", { noremap = true, silent = true })
 
+-- Toggle terminal
+vim.api.nvim_set_keymap("n", "<leader>t", ":botright split | terminal<CR>", { noremap = true, silent = true })
 
---vim.newfile.set_options({
---  prompt = true, -- prompt the user to enter a path
---  default_dir = vim.fn.getcwd(), -- default to current directory
---})
+-- Exit terminal mode with Escape
+vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
+-- Create vertical split
+vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
 
+function _G.create_new_file()
+	local path = vim.fn.input("New file path: ", vim.fn.getcwd() .. "/", "file")
+	if path ~= "" then
+		-- Create directories if they don't exist
+		local dir = vim.fn.fnamemodify(path, ":h")
+		if vim.fn.isdirectory(dir) == 0 then
+			vim.fn.mkdir(dir, "p")
+		end
+		-- Edit the new file
+		vim.cmd("edit " .. path)
+	end
+end
+
+vim.opt.clipboard = "unnamedplus"
+
+-- Change this line to use your custom function instead of startup's new_file
+vim.keymap.set("n", "<leader>nf", ":lua create_new_file()<CR>", { noremap = true, silent = true })
 vim.cmd([[
-
-  nnoremap <leader>nf :lua require'startup'.new_file()<cr>
   nnoremap <leader>cs :Telescope colorscheme<cr>
 ]])
