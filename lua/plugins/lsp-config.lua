@@ -18,7 +18,6 @@ return {
           "terraformls",
           "gopls",
           "pyright",
-          "tsserver",
         },
       })
     end,
@@ -62,7 +61,6 @@ return {
         "quick_lint_js",
         "terraformls",
         "pyright",
-        "tsserver",
       }
 
       for _, lsp in ipairs(servers) do
@@ -75,4 +73,3 @@ return {
     end,
   },
 }
-
